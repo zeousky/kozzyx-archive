@@ -3,91 +3,130 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="referrer" content="no-referrer">
-  <meta name="description" content="The KozzyX archive, a collection of commands, features, and the original video from the archived Discord server bot.">
-  <meta name="theme-color" content="#19142d">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
-  <title>KozzyX · Discord bot archive</title>
-  <link rel="icon" href="./assets/pfp-96.png" type="image/png">
-  <link rel="stylesheet" href="./assets/archive.css">
+  <meta name="theme-color" content="#f4efe3">
+  <meta name="description" content="A free printable game sheet with a number puzzle, a four-letter word ladder, and a two-player bridge game.">
+  <title>Pencil &amp; Paper · The Game Sheet</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="assets/paper.css">
+  <script src="assets/paper.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
-  <header class="top">
-    <div class="frame top-row">
-      <a class="logo" href="./"><span aria-hidden="true">KX</span> KozzyX</a>
-      <nav aria-label="Main">
-        <a href="#commands">Commands</a>
-        <a href="./privacy/">Privacy</a>
-      </nav>
-    </div>
+  <a class="skip" href="#games">Skip to the games</a>
+  <header class="masthead page">
+    <a class="imprint" href="./">The Game Sheet</a>
+    <button class="print-link" type="button" data-print hidden>Print sheet <span aria-hidden="true">↗</span></button>
   </header>
-  <main class="frame" id="main">
-    <section class="cover" aria-labelledby="archive-title">
-      <div class="cover-copy">
-        <p class="eyebrow"><span aria-hidden="true"></span> Archived Discord bot</p>
-        <h1 id="archive-title">KozzyX</h1>
-        <p class="cover-description">A little piece of server history. KozzyX brought moderation, anti-raid tools, tickets, and community commands together in one Discord bot.</p>
-        <a class="button" href="#commands">Open the command guide <span aria-hidden="true">↓</span></a>
+
+  <main class="page" id="games">
+    <div class="spread">
+      <div class="cover">
+        <h1>Pencil <em>&amp;</em><br>Paper</h1>
+        <p class="standfirst">Three games for a quiet table.</p>
+        <p class="intro">Fill in the numbers, climb a word ladder, or find someone to play Last Bridge. Play here or print a blank copy for later.</p>
+        <nav aria-label="Game index">
+          <ul class="contents">
+            <li><a href="#grid-sums"><span>Grid sums</span><small>Numbers</small></a></li>
+            <li><a href="#word-ladder"><span>Find to Lost</span><small>Words</small></a></li>
+            <li><a href="#last-bridge"><span>Last Bridge</span><small>Two players</small></a></li>
+          </ul>
+        </nav>
       </div>
-      <figure class="sleeve" aria-label="KozzyX cover art">
-        <div class="sleeve-banner"><span>KOZZYX</span><span>SERVER TOOLS</span></div>
-        <div class="sleeve-art">
-          <i class="orbit" aria-hidden="true"></i>
-          <i class="orbit orbit-wide" aria-hidden="true"></i>
-          <span class="sticker" aria-hidden="true">✦</span>
-          <img src="./assets/pfp.png" alt="The KozzyX mascot wearing headphones" width="256" height="256">
-          <span class="sleeve-stars" aria-hidden="true">✦<br>✧</span>
+
+      <section class="front-game" id="grid-sums" aria-labelledby="sums-title">
+        <div class="game-header">
+          <span class="game-number" aria-hidden="true">1.</span>
+          <div>
+            <h2 id="sums-title">Grid sums</h2>
+            <p>Use each number from 1 to 9 once. Make every row and column add up to the penciled total.</p>
+          </div>
         </div>
-        <figcaption class="sleeve-band"><span>DISCORD UTILITIES</span><span>ARCHIVE COPY</span></figcaption>
-      </figure>
+        <form class="sums-form" id="sums-form">
+          <table class="sums" aria-label="Grid sums puzzle">
+            <tbody>
+              <tr><td class="given">6</td><td><input aria-label="Row 1 column 2" inputmode="numeric" maxlength="1" autocomplete="off"></td><td><input aria-label="Row 1 column 3" inputmode="numeric" maxlength="1" autocomplete="off"></td><th scope="row"><span class="sr-only">Row 1 total is </span>12</th></tr>
+              <tr><td><input aria-label="Row 2 column 1" inputmode="numeric" maxlength="1" autocomplete="off"></td><td class="given">2</td><td><input aria-label="Row 2 column 3" inputmode="numeric" maxlength="1" autocomplete="off"></td><th scope="row"><span class="sr-only">Row 2 total is </span>14</th></tr>
+              <tr><td><input aria-label="Row 3 column 1" inputmode="numeric" maxlength="1" autocomplete="off"></td><td><input aria-label="Row 3 column 2" inputmode="numeric" maxlength="1" autocomplete="off"></td><td><input aria-label="Row 3 column 3" inputmode="numeric" maxlength="1" autocomplete="off"></td><th scope="row"><span class="sr-only">Row 3 total is </span>19</th></tr>
+              <tr class="column-totals"><td><span class="sr-only">Column 1 total is </span>13</td><td><span class="sr-only">Column 2 total is </span>11</td><td><span class="sr-only">Column 3 total is </span>21</td><td></td></tr>
+            </tbody>
+          </table>
+          <div class="actions">
+            <button type="submit">Check grid</button>
+            <button type="reset" class="quiet">Erase</button>
+          </div>
+          <p class="status" id="sums-result" role="status"></p>
+        </form>
+      </section>
+    </div>
+
+    <section class="game" id="word-ladder" aria-labelledby="ladder-title">
+      <div class="game-copy">
+        <div class="game-header">
+          <span class="game-number" aria-hidden="true">2.</span>
+          <div>
+            <h2 id="ladder-title">Find to Lost</h2>
+            <p>Change one letter at a time to get from <strong>FIND</strong> to <strong>LOST</strong>. Keep the other three letters in place and use the clue on each rung.</p>
+          </div>
+        </div>
+      </div>
+      <form class="ladder-form" id="ladder-form">
+        <ol class="ladder">
+          <li><span class="terminal">FIND</span><span class="rung-note">Start here</span></li>
+          <li><input id="rung-one" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false"><label for="rung-one">A penalty you might have to pay</label></li>
+          <li><input id="rung-two" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false"><label for="rung-two">What you stand in while you wait</label></li>
+          <li><input id="rung-three" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false"><label for="rung-three">By yourself</label></li>
+          <li><input id="rung-four" maxlength="4" autocomplete="off" autocapitalize="characters" spellcheck="false"><label for="rung-four">The opposite of win</label></li>
+          <li><span class="terminal">LOST</span><span class="rung-note">Finish here</span></li>
+        </ol>
+        <div class="actions">
+          <button type="submit">Check ladder</button>
+          <button type="reset" class="quiet">Erase</button>
+        </div>
+        <p class="status" id="ladder-result" role="status"></p>
+      </form>
     </section>
 
-    <section class="capabilities" id="what" aria-labelledby="capabilities-title">
-      <h2 id="capabilities-title">What it did</h2>
-      <ul class="capability-list">
-        <li><h3>Moderation</h3><p>Warnings, bans, timeouts, and a persistent case log.</p></li>
-        <li><h3>Server setup</h3><p>Verification panels, anti-raid protection, and invite tracking.</p></li>
-        <li><h3>Community tools</h3><p>Button tickets, giveaways, polls, reminders, and self-roles.</p></li>
-      </ul>
-    </section>
-
-    <section class="archive-columns" id="commands" aria-labelledby="commands-title">
-      <div class="readme">
-        <div class="window-bar"><span aria-hidden="true">▧</span><span>COMMANDS.TXT</span></div>
-        <div class="readme-content">
-          <h2 id="commands-title">Command guide</h2>
-          <dl class="command-list">
-            <div><dt><code>/help</code></dt><dd>Browse commands by category.</dd></div>
-            <div><dt><code>/ban</code> <code>/warn</code></dt><dd>Apply a staff action and record it in the case log.</dd></div>
-            <div><dt><code>/server_setup</code></dt><dd>Run the guided setup for a server.</dd></div>
-            <div><dt><code>/verification setup</code></dt><dd>Set up a verification panel for new members.</dd></div>
-            <div><dt><code>/poll</code> <code>/selfroles</code></dt><dd>Let members vote or pick their own roles.</dd></div>
-            <div><dt><code>/data_request</code></dt><dd>Let server owners review the data stored for their server.</dd></div>
-          </dl>
+    <section class="game" id="last-bridge" aria-labelledby="bridge-title">
+      <div class="game-copy">
+        <div class="game-header">
+          <span class="game-number" aria-hidden="true">3.</span>
+          <div>
+            <h2 id="bridge-title">Last Bridge</h2>
+            <p>Take turns joining a dot on the left bank to one on the right. Each dot can be used once and bridges can’t cross. Whoever draws the final bridge wins.</p>
+          </div>
         </div>
       </div>
-      <div class="archive-side">
-        <figure class="archive-video">
-          <video controls playsinline preload="none" poster="./image.png" aria-label="Original KozzyX homepage video">
-            <source src="./video.mp4" type="video/mp4">
-            <a href="./video.mp4">Download the original video</a>
-          </video>
-          <figcaption>Original homepage loop</figcaption>
-        </figure>
-        <section class="archive-note" id="limits" aria-labelledby="note-title">
-          <h2 id="note-title">About the archive</h2>
-          <p>The bot is archived. The command guide records the original features. The <a href="./privacy/">privacy policy</a> and <a href="./terms/">terms</a> remain available.</p>
-        </section>
+      <div class="bridge-game">
+        <div class="bridge-board" role="group" aria-label="Last Bridge game board">
+          <canvas aria-hidden="true" width="480" height="240"></canvas>
+          <div class="bank left-bank" aria-label="Left bank" role="group">
+            <span>Left bank</span>
+            <button type="button" data-bank="left" data-dot="1" aria-label="Left bank, dot 1" aria-pressed="false"></button>
+            <button type="button" data-bank="left" data-dot="2" aria-label="Left bank, dot 2" aria-pressed="false"></button>
+            <button type="button" data-bank="left" data-dot="3" aria-label="Left bank, dot 3" aria-pressed="false"></button>
+            <button type="button" data-bank="left" data-dot="4" aria-label="Left bank, dot 4" aria-pressed="false"></button>
+            <button type="button" data-bank="left" data-dot="5" aria-label="Left bank, dot 5" aria-pressed="false"></button>
+          </div>
+          <div class="bank right-bank" aria-label="Right bank" role="group">
+            <span>Right bank</span>
+            <button type="button" data-bank="right" data-dot="1" aria-label="Right bank, dot 1" aria-pressed="false"></button>
+            <button type="button" data-bank="right" data-dot="2" aria-label="Right bank, dot 2" aria-pressed="false"></button>
+            <button type="button" data-bank="right" data-dot="3" aria-label="Right bank, dot 3" aria-pressed="false"></button>
+            <button type="button" data-bank="right" data-dot="4" aria-label="Right bank, dot 4" aria-pressed="false"></button>
+            <button type="button" data-bank="right" data-dot="5" aria-label="Right bank, dot 5" aria-pressed="false"></button>
+          </div>
+        </div>
+        <div class="actions">
+          <button type="button" id="bridge-reset" class="quiet">Start over</button>
+        </div>
+        <p class="status bridge-status" id="bridge-result" role="status">Player 1, choose an open dot on either bank.</p>
+        <ol class="bridge-history sr-only" aria-label="Bridges played"></ol>
       </div>
     </section>
+    <noscript><p>Use your browser’s print command for a blank game sheet.</p></noscript>
   </main>
-  <footer class="frame footer">
-    <span>KozzyX Archive</span>
-    <nav aria-label="Footer">
-      <a href="./privacy/">Privacy</a>
-      <a href="./terms/">Terms</a>
-    </nav>
+  <footer class="page footer">
+    <p><strong>Pencil &amp; Paper</strong></p>
+    <button class="print-link" type="button" data-print hidden>Print a blank sheet <span aria-hidden="true">↗</span></button>
   </footer>
 </body>
 </html>
